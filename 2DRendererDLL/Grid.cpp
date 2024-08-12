@@ -42,6 +42,20 @@ namespace Renderer {
 		
 	}
 
+	void Grid::UnsetPixel(unsigned int x, unsigned int y) {
+		// Check if specified values are in the grid and atleast 0
+		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
+			std::cout << "Value too big for grid size!";
+			return;
+		}
+
+		if (this->m_grid[x][y] == false)
+			return;
+
+		this->m_grid[x][y] = false;
+
+	}
+
 	//Getter
 	float Grid::GetPixelWidth() const{
 		return Grid::m_pixelWidth;

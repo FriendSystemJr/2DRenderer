@@ -14,6 +14,7 @@ public:
 	float GetPixelHeight() const;
 
 	void SetPixel(unsigned int x, unsigned int y);
+	void UnsetPixel(unsigned int x, unsigned int y);
 
 	unsigned int GetSizeX() const;
 	unsigned int GetSizeY() const;
