@@ -9,7 +9,7 @@ class __declspec(dllexport) Grid {
 	
 public:
 	
-	//Getter
+	// Getter
 	float GetPixelWidth() const;
 	float GetPixelHeight() const;
 
@@ -26,18 +26,19 @@ public:
 
 private:
 
-	//Make constructor private so that it can only be created via method
+	// Make constructor private so that it can only be created via method
 	Grid() = delete;
 	Grid(unsigned int x, unsigned int y);
 
+	// Friend function so that it can access the constructor
 	friend __declspec(dllexport) Grid CreateGrid(unsigned int x, unsigned int y);
 
-	//Variables
+	// Variables
 
 	std::vector<std::vector<bool>> m_grid;
 	std::vector<float> m_vertices;
 
-	//Size of grid
+	// Size of grid
 	unsigned int m_sizeX;
 	unsigned int m_sizeY;
 

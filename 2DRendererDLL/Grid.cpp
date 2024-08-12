@@ -5,15 +5,19 @@
 namespace Renderer {
 
 	Grid::Grid(unsigned int x, unsigned int y) {
+		//Initialize grid with given size
 		m_grid = std::vector<std::vector<bool>>(x, std::vector<bool>(y, false));
 		std::cout << "Init grid\n";
 
+		// Set size of grid
 		Grid::m_sizeX = x;
 		Grid::m_sizeY = y;
 
+		// Init VAO/VBO
 		Grid::m_VAO = 0;
 		Grid::m_VBO = 0;
 
+		// Calculate offset for vertex pos
 		Grid::m_pixelWidth = 2.0f / x;
 		Grid::m_pixelHeight = 2.0f / y;
 	}
@@ -23,16 +27,19 @@ namespace Renderer {
 	}
 
 	void Grid::SetPixel(unsigned int x, unsigned int y) {
-		if (x >= this->m_sizeX || y >= this->m_sizeY) {
+		// Check if specified values are in the grid and atleast 0
+		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
 			std::cout << "Value too big for grid size!";
 			return;
-		} else if (x >= 0 && x < this->m_sizeX && y >= 0 && y < this->m_sizeY) {
-			this->m_grid[x][y] = true;
+
+			//Check if pixel is already set
+		} else if (this->m_grid[x][y]) {
 			return;
 		}
-
-		if (this->m_grid[x][y])
-			return;
+			
+		//Set pixel to true
+		this->m_grid[x][y] = true;
+		
 	}
 
 	//Getter

@@ -5,14 +5,15 @@
 namespace Renderer {
 
 	GLFWwindow* RendererCore::m_window = nullptr;
-	Shader RendererCore::m_Shader;
 
 	bool RendererCore::InitOpenGL(unsigned int width, unsigned int height, const char* windowName) {
+		// Init and set OpenGL version
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+		// Create window with given arguments
 		m_window = glfwCreateWindow(width, height, windowName, NULL, NULL);
 
 		//Check for error
@@ -22,6 +23,7 @@ namespace Renderer {
 			return false;
 		}
 
+		// Set window-context and register callback
 		glfwMakeContextCurrent(m_window);
 		glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);;
 
@@ -46,10 +48,6 @@ namespace Renderer {
 	GLFWwindow* RendererCore::GetWindow()
 	{
 		return m_window;
-	}
-
-	Shader& RendererCore::GetShader() {
-		return RendererCore::m_Shader;
 	}
 
 }

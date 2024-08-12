@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Headerdateien\Import">
+      <UniqueIdentifier>{a4d49b4f-0ea8-47aa-a4d1-8ef5935249b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -23,14 +26,14 @@
     <ClInclude Include="RenderAPI.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="BufferManager.h">
+      <Filter>Headerdateien\Import</Filter>
+    </ClInclude>
     <ClInclude Include="Grid.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\Import</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="BufferManager.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\Import</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

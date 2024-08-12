@@ -6,6 +6,7 @@
 namespace Renderer {
 	extern "C" {
 
+		// Function for catching OpenGL errors
 		void checkGLError(const char* point) {
 			GLenum err;
 			while ((err = glGetError()) != GL_NO_ERROR) {
@@ -78,23 +79,23 @@ namespace Renderer {
 				}
 			}
 
-			//Bind Buffer and empty it because of dynamic array size (reallocation)
+			// Bind Buffer and empty it because of dynamic array size (reallocation)
 			glBindBuffer(GL_ARRAY_BUFFER, grid.GetVBO());
 			glBufferData(GL_ARRAY_BUFFER, grid.GetVertices().size() * sizeof(float), NULL, GL_DYNAMIC_DRAW);
 
 			shader.use();
 
-			//Buffer new data and then unbind buffer
+			// Buffer new data and then unbind buffer
 			glBufferSubData(GL_ARRAY_BUFFER, 0, grid.GetVertices().size() * sizeof(float), grid.GetVertices().data());
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 			
-			//bind vao for drawing
+			// Bind vao for drawing
 			glBindVertexArray(grid.GetVAO());
 			glDrawArrays(GL_TRIANGLES, 0, grid.GetVertices().size() / 2);
 
 			grid.GetVertices().clear();
 
-			//TODO: Maybe also rework window usage
+			// TODO: Maybe also rework window usage
 			glfwSwapBuffers(RendererCore::GetWindow());
 			glfwPollEvents();
 
