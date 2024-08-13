@@ -16,6 +16,7 @@ int main() {
 	buffer.SetVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2*sizeof(float)));
 
 	grid.SetPixel(1, 1);
+	grid.SetPixel(0, 0);
 
 	while (!Renderer::windowShouldClose()) {
 		// TODO: Properly integrate shader into grid
