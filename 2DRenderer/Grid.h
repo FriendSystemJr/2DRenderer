@@ -6,7 +6,6 @@
 namespace Renderer {
 
 	class __declspec(dllimport) Grid {
-
 	public:
 
 		// Getter
