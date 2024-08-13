@@ -29,4 +29,11 @@ namespace Renderer {
         glVertexAttribPointer(index, size, type, normalized, stride, pointer);
         glEnableVertexAttribArray(index);
     }
+
+    void BufferManager::SetGridStandard() {
+        Bind();
+        SetBufferData(grid.GetVertices().size() * sizeof(float), grid.GetVertices().data(), GL_DYNAMIC_DRAW);
+        SetVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+        SetVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2 * sizeof(float)));
+    }
 }

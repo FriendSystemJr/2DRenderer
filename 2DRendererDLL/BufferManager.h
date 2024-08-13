@@ -18,5 +18,6 @@ namespace Renderer {
 
 		void SetBufferData(size_t size, const void* data, GLenum usage = GL_STATIC_DRAW) const;
 		void SetVertexAttribPointer(unsigned int index, int size, GLenum type, GLboolean normalized, GLsizei stride, const void* pointer) const;
+		void SetGridStandard();
 	};
 }
