@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Shader.h"
+#include "Pixel.h"
 
 namespace Renderer {
 
@@ -22,7 +23,7 @@ public:
 	unsigned int& GetVAO();
 	unsigned int& GetVBO();
 
-	std::vector<std::vector<bool>>& GetGrid();
+	std::vector<std::vector<Pixel>>& GetGrid();
 	std::vector<float>& GetVertices();
 
 private:
@@ -36,7 +37,8 @@ private:
 
 	// Variables
 
-	std::vector<std::vector<bool>> m_grid;
+	//std::vector<std::vector<bool>> m_grid;
+	std::vector<std::vector<Pixel>> m_grid;
 	std::vector<float> m_vertices;
 
 	// Size of grid

@@ -12,9 +12,11 @@ int main() {
 
 	buffer.Bind();
 	buffer.SetBufferData(grid.GetVertices().size() * sizeof(float), grid.GetVertices().data(), GL_DYNAMIC_DRAW);
-	buffer.SetVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+	buffer.SetVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	buffer.SetVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2*sizeof(float)));
 
 	grid.SetPixel(1, 1);
+
 	while (!Renderer::windowShouldClose()) {
 		// TODO: Properly integrate shader into grid
 		Renderer::RenderGrid(grid, shader);

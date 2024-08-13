@@ -35,5 +35,8 @@
     <ClInclude Include="Shader.h">
       <Filter>Headerdateien\Import</Filter>
     </ClInclude>
+    <ClInclude Include="Pixel.h">
+      <Filter>Headerdateien\Import</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

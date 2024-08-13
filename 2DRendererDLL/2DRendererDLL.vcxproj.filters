@@ -39,6 +39,9 @@
     <ClInclude Include="BufferManager.h">
       <Filter>Headerdateien\Export</Filter>
     </ClInclude>
+    <ClInclude Include="Pixel.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -63,6 +66,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="BufferManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Pixel.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

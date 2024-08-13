@@ -48,7 +48,7 @@ namespace Renderer {
 			// iterate over grid to push points to render in vector
 			for (int i = 0; i < grid.GetSizeX(); ++i) {
 				for (int j = 0; j < grid.GetSizeY(); ++j) {
-					if (grid.GetGrid()[i][j]) {
+					if (grid.GetGrid()[i][j].IsSet()) {
 
 						float x = -1.0f + i * grid.GetPixelWidth();
 						float y = -1.0f + j * grid.GetPixelHeight();
@@ -59,22 +59,30 @@ namespace Renderer {
 						// Push back the first triangle
 						grid.GetVertices().push_back(x);
 						grid.GetVertices().push_back(y);
+						// Push back color of pixel
+						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 						grid.GetVertices().push_back(x + grid.GetPixelWidth());
 						grid.GetVertices().push_back(y);
+						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 						grid.GetVertices().push_back(x);
 						grid.GetVertices().push_back(y + grid.GetPixelHeight());
+						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 						// Push back the second triangle
 						grid.GetVertices().push_back(x);
 						grid.GetVertices().push_back(y + grid.GetPixelHeight());
+						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 						grid.GetVertices().push_back(x + grid.GetPixelWidth());
 						grid.GetVertices().push_back(y);
+						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 						grid.GetVertices().push_back(x + grid.GetPixelWidth());
 						grid.GetVertices().push_back(y + grid.GetPixelHeight());
+						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
+
 					}
 				}
 			}
@@ -91,7 +99,7 @@ namespace Renderer {
 			
 			// Bind vao for drawing
 			glBindVertexArray(grid.GetVAO());
-			glDrawArrays(GL_TRIANGLES, 0, grid.GetVertices().size() / 2);
+			glDrawArrays(GL_TRIANGLES, 0, grid.GetVertices().size() / 6);
 
 			grid.GetVertices().clear();
 

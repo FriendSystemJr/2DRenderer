@@ -1,12 +1,11 @@
 #include "Grid.h"
-#include "Shader.h"
 #include <iostream>
 
 namespace Renderer {
 
 	Grid::Grid(unsigned int x, unsigned int y) {
 		//Initialize grid with given size
-		m_grid = std::vector<std::vector<bool>>(x, std::vector<bool>(y, false));
+		m_grid = std::vector<std::vector<Pixel>>(x, std::vector<Pixel>(y, Pixel()));
 		std::cout << "Init grid\n";
 
 		// Set size of grid
@@ -33,15 +32,16 @@ namespace Renderer {
 			return;
 
 			//Check if pixel is already set
-		} else if (this->m_grid[x][y]) {
+		} else if (this->m_grid[x][y].IsSet()) {
 			return;
 		}
 			
 		//Set pixel to true
-		this->m_grid[x][y] = true;
+		this->m_grid[x][y].SetPixel();
 		
 	}
 
+	// TODO reset color when unsetting pixel
 	void Grid::UnsetPixel(unsigned int x, unsigned int y) {
 		// Check if specified values are in the grid and atleast 0
 		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
@@ -49,10 +49,10 @@ namespace Renderer {
 			return;
 		}
 
-		if (this->m_grid[x][y] == false)
+		if (this->m_grid[x][y].IsSet() == false)
 			return;
 
-		this->m_grid[x][y] = false;
+		this->m_grid[x][y].UnsetPixel();
 
 	}
 
@@ -73,7 +73,7 @@ namespace Renderer {
 		return Grid::m_sizeY;
 	}
 
-	std::vector<std::vector<bool>>& Grid::GetGrid() {
+	std::vector<std::vector<Pixel>>& Grid::GetGrid() {
 		return Grid::m_grid;
 	}
 
