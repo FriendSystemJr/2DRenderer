@@ -5,7 +5,7 @@ namespace Renderer {
 	class Pixel {
 	public:
 
-		Pixel();
+		friend class Grid;
 
 		// Getter
 		bool IsSet();
@@ -16,6 +16,7 @@ namespace Renderer {
 		void UnsetPixel();
 
 	private:
+		Pixel();
 		bool m_isSet;
 		std::array<float, 4> m_color;
 	};

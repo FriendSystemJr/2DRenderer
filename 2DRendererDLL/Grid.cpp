@@ -25,7 +25,7 @@ namespace Renderer {
 		return Grid(x, y);
 	}
 
-	void Grid::SetPixel(unsigned int x, unsigned int y) {
+	void Grid::SetPixel(unsigned int x, unsigned int y, std::array<float, 4> color) {
 		// Check if specified values are in the grid and atleast 0
 		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
 			std::cout << "Value too big for grid size!";
@@ -37,7 +37,7 @@ namespace Renderer {
 		}
 			
 		//Set pixel to true
-		this->m_grid[x][y].SetPixel();
+		this->m_grid[x][y].SetPixel(color);
 		
 	}
 
