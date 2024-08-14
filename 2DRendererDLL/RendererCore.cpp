@@ -25,7 +25,6 @@ namespace Renderer {
 
 		// Set window-context and register callback
 		glfwMakeContextCurrent(m_window);
-		glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);;
 
 		//Init GLAD
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -37,6 +36,13 @@ namespace Renderer {
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 		return true;
+	}
+
+	// TODO: Rework (Template?)
+	void RendererCore::CleanupOpenGL(unsigned int& VBO, unsigned int& VAO) {
+		glDeleteVertexArrays(1, &VAO);
+		glDeleteBuffers(1, &VBO);
+		//TODO: delete shader
 	}
 
 	//Callbacks

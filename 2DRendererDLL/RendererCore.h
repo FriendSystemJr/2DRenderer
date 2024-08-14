@@ -11,6 +11,8 @@ public:
 
 	// Functions
 	static bool InitOpenGL(unsigned int width, unsigned int height, const char* windowName);
+	static void CleanupOpenGL(unsigned int& VBO, unsigned int& VAO);
+	static void SetInputCallback()
 
 	// Callbacks
 	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);

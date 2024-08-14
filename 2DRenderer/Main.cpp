@@ -19,7 +19,9 @@ int main() {
 
 	while (!Renderer::windowShouldClose()) {
 		// TODO: Properly integrate shader into grid
+		Renderer::processInput(window);
 		Renderer::RenderGrid(grid, shader);
 	}
 
+	Renderer::Cleanup(grid.GetVBO(), grid.GetVAO());
 }

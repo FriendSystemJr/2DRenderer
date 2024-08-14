@@ -109,5 +109,9 @@ namespace Renderer {
 
 		}
 
+		void Cleanup(unsigned int& VBO, unsigned int& VAO) {
+			RendererCore::CleanupOpenGL(VBO, VAO);
+		}
+
 	}
 }
