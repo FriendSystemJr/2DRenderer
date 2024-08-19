@@ -6,6 +6,10 @@ namespace Renderer {
 
 	GLFWwindow* RendererCore::m_window = nullptr;
 
+	void RendererCore::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+		glViewport(0, 0, width, height);
+	}
+
 	bool RendererCore::InitOpenGL(unsigned int width, unsigned int height, const char* windowName) {
 		// Init and set OpenGL version
 		glfwInit();
@@ -25,6 +29,7 @@ namespace Renderer {
 
 		// Set window-context and register callback
 		glfwMakeContextCurrent(m_window);
+		glfwSetFramebufferSizeCallback(m_window, framebuffer_size_callback);
 
 		//Init GLAD
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -43,11 +48,6 @@ namespace Renderer {
 		glDeleteVertexArrays(1, &VAO);
 		glDeleteBuffers(1, &VBO);
 		//TODO: delete shader
-	}
-
-	//Callbacks
-	void RendererCore::framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-		glViewport(0, 0, width, height);
 	}
 
 	//Getter
