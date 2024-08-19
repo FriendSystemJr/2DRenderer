@@ -53,6 +53,18 @@ namespace Renderer {
 			return;
 
 		this->m_grid[x][y].UnsetPixel();
+	}
+
+	bool Grid::IsSet(unsigned int x, unsigned int y) {
+		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
+			std::cout << "Value too big for grid size!";
+			return false;
+		}
+
+		if (this->m_grid[x][y].IsSet() == false)
+			return false;
+		if (this->m_grid[x][y].IsSet())
+			return true;
 
 	}
 

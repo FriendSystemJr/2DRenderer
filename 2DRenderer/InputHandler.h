@@ -3,7 +3,7 @@
 
 namespace Renderer {
 
-	class __declspec(dllexport) InputHandler {
+	class __declspec(dllimport) InputHandler {
 	public:
 
 		enum KeyCode {

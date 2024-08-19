@@ -39,7 +39,7 @@ namespace Renderer {
 		}
 
 		bool windowShouldClose() {
-			return glfwWindowShouldClose(Renderer::RendererCore::GetWindow());
+			return glfwWindowShouldClose(Renderer::RendererCore::ReturnWindow());
 		}
 
 		void RenderGrid(Grid& grid, Shader& shader) {
@@ -104,13 +104,17 @@ namespace Renderer {
 			grid.GetVertices().clear();
 
 			// TODO: Maybe also rework window usage
-			glfwSwapBuffers(RendererCore::GetWindow());
+			glfwSwapBuffers(RendererCore::ReturnWindow());
 			glfwPollEvents();
 
 		}
 
 		void Cleanup(unsigned int& VBO, unsigned int& VAO) {
 			RendererCore::CleanupOpenGL(VBO, VAO);
+		}
+
+		void* GetRenderWindow() {
+			return RendererCore::ReturnWindow();
 		}
 
 	}

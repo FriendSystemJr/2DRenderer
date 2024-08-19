@@ -51,7 +51,7 @@ namespace Renderer {
 	}
 
 	//Getter
-	GLFWwindow* RendererCore::GetWindow()
+	GLFWwindow* RendererCore::ReturnWindow()
 	{
 		return m_window;
 	}

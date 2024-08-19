@@ -1,6 +1,7 @@
 #include "Shader.h"
 #include "Grid.h"
 #include "BufferManager.h"
+#include "InputHandler.h"
 
 namespace Renderer {
 	
@@ -9,5 +10,6 @@ namespace Renderer {
 		__declspec(dllimport) bool windowShouldClose();
 		__declspec(dllimport) void RenderGrid(Grid& grid, Shader& shader);
 		__declspec(dllimport) void Cleanup(unsigned int& VBO, unsigned int& VAO);
+		__declspec(dllimport) void* GetRenderWindow();
 	}
 }

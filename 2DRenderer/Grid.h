@@ -16,6 +16,7 @@ namespace Renderer {
 
 		void SetPixel(unsigned int x, unsigned int y, std::array<float, 4> color = { 1.0f, 1.0f, 1.0f, 1.0f });
 		void UnsetPixel(unsigned int x, unsigned int y);
+		bool IsSet(unsigned int x, unsigned int y);
 
 		unsigned int GetSizeX() const;
 		unsigned int GetSizeY() const;
