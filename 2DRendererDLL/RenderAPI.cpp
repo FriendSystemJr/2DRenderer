@@ -6,6 +6,13 @@
 namespace Renderer {
 	extern "C" {
 
+		float deltaTime = 0.0f;
+		float lastFrame = 0.0f;
+
+		float GetDeltaTime() {
+			return deltaTime;
+		}
+
 		// Function for catching OpenGL errors
 		void checkGLError(const char* point) {
 			GLenum err;
@@ -43,6 +50,10 @@ namespace Renderer {
 		}
 
 		void RenderGrid(Grid& grid, Shader& shader) {
+			float currentFrame = static_cast<float>(glfwGetTime());
+			deltaTime = currentFrame - lastFrame;
+			lastFrame = currentFrame;
+
 			// Clear screen from initial colors
 			glClear(GL_COLOR_BUFFER_BIT);
 			// iterate over grid to push points to render in vector
