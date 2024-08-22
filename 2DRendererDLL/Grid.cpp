@@ -25,14 +25,19 @@ namespace Renderer {
 		return Grid(x, y);
 	}
 
-	void Grid::SetPixel(unsigned int x, unsigned int y, std::array<float, 4> color) {
+	void Grid::SetPixel(unsigned int x, unsigned int y, std::array<float, 4> color, bool checkColor) {
 		// Check if specified values are in the grid and atleast 0
 		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
-			std::cout << "Value too big for grid size!";
+			std::cout << "Value too big for grid size!\n";
 			return;
 
 			//Check if pixel is already set
 		} else if (this->m_grid[x][y].IsSet()) {
+			if (checkColor) {
+				if (this->m_grid[x][y].GetColor() != color) {
+					this->m_grid[x][y].SetColor(color);
+				}
+			}
 			return;
 		}
 			
@@ -45,7 +50,7 @@ namespace Renderer {
 	void Grid::UnsetPixel(unsigned int x, unsigned int y) {
 		// Check if specified values are in the grid and atleast 0
 		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
-			std::cout << "Value too big for grid size!";
+			std::cout << "Value too big for grid size!\n";
 			return;
 		}
 
@@ -57,7 +62,7 @@ namespace Renderer {
 
 	bool Grid::IsSet(unsigned int x, unsigned int y) {
 		if ((x >= this->m_sizeX || y >= this->m_sizeY) && (x >= 0 && y >= 0)) {
-			std::cout << "Value too big for grid size!";
+			std::cout << "Value too big for grid size!\n";
 			return false;
 		}
 

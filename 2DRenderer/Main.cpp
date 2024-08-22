@@ -38,8 +38,12 @@ void HandleInput(GLFWwindow* window, Renderer::Grid& grid) {
 		if (!grid.IsSet(0, 0)) {
 			grid.SetPixel(0, 0);
 		}
-		else {
+	}
+
+	if (Renderer::InputHandler::GetKey(window, Renderer::InputHandler::KeyCode::KEY_S) == Renderer::InputHandler::KEY_PRESSED) {
+		if (grid.IsSet(0, 0)) {
 			grid.UnsetPixel(0, 0);
 		}
 	}
+
 }

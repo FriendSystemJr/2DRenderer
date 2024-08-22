@@ -39,10 +39,10 @@
     <ClInclude Include="BufferManager.h">
       <Filter>Headerdateien\Export</Filter>
     </ClInclude>
-    <ClInclude Include="Pixel.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="InputHandler.h">
+      <Filter>Headerdateien\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="Pixel.h">
       <Filter>Headerdateien\Export</Filter>
     </ClInclude>
   </ItemGroup>
