@@ -25,4 +25,8 @@ namespace Renderer {
 		Pixel::m_isSet = false;
 	}
 
+	void Pixel::SetColor(std::array<float, 4> color) {
+		m_color = color;
+	}
+
 }
