@@ -73,6 +73,16 @@ namespace Renderer {
 
 	}
 
+	void Grid::Clear() {
+		for (int i = 0; i < m_grid.size(); ++i) {
+			for (int j = 0; j < m_grid[i].size(); ++j) {
+				if (m_grid[i][j].IsSet()) {
+					m_grid[i][j].UnsetPixel();
+				}
+			}
+		}
+	}
+
 	//Getter
 	float Grid::GetPixelWidth() const{
 		return Grid::m_pixelWidth;

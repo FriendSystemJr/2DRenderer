@@ -10,13 +10,14 @@ namespace Renderer {
 
 	public:
 
-		// Getter
-		float GetPixelWidth() const;
-		float GetPixelHeight() const;
-
 		void SetPixel(unsigned int x, unsigned int y, std::array<float, 4> color = { 1.0f, 1.0f, 1.0f, 1.0f }, bool checkColor=false);
 		void UnsetPixel(unsigned int x, unsigned int y);
 		bool IsSet(unsigned int x, unsigned int y);
+		void Clear();
+
+		// Getter
+		float GetPixelWidth() const;
+		float GetPixelHeight() const;
 
 		unsigned int GetSizeX() const;
 		unsigned int GetSizeY() const;
@@ -38,7 +39,6 @@ namespace Renderer {
 
 		// Variables
 
-		//std::vector<std::vector<bool>> m_grid;
 		std::vector<std::vector<Pixel>> m_grid;
 		std::vector<float> m_vertices;
 
