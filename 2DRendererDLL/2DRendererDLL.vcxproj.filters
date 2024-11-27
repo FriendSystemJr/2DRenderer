@@ -27,9 +27,6 @@
     <ClInclude Include="RendererCore.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="RenderAPI.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Headerdateien\Export</Filter>
     </ClInclude>
@@ -43,6 +40,9 @@
       <Filter>Headerdateien\Export</Filter>
     </ClInclude>
     <ClInclude Include="Pixel.h">
+      <Filter>Headerdateien\Export</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderAPI.h">
       <Filter>Headerdateien\Export</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,6 +28,8 @@ int main() {
 		//Renderer::processInput(window);
 		HandleInput((GLFWwindow*)Renderer::GetRenderWindow(), grid);
 		Renderer::RenderGrid(grid, shader);
+		Renderer::BufferSwap(Renderer::GetRenderWindow());
+		Renderer::PollEvents();
 		
 	}
 	Renderer::Cleanup(grid.GetVBO(), grid.GetVAO());

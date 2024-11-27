@@ -54,6 +54,8 @@ namespace Renderer {
 			deltaTime = currentFrame - lastFrame;
 			lastFrame = currentFrame;
 
+			grid.GetVertices().reserve(static_cast<std::vector<float, std::allocator<float>>::size_type>(36) * grid.GetSizeX() * grid.GetSizeY());
+
 			// Clear screen from initial colors
 			glClear(GL_COLOR_BUFFER_BIT);
 			// iterate over grid to push points to render in vector
@@ -68,30 +70,30 @@ namespace Renderer {
 						// TODO: Optimize with EBO
 
 						// Push back the first triangle
-						grid.GetVertices().push_back(x);
-						grid.GetVertices().push_back(y);
+						grid.GetVertices().emplace_back(x);
+						grid.GetVertices().emplace_back(y);
 						// Push back color of pixel
 						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
-						grid.GetVertices().push_back(x + grid.GetPixelWidth());
-						grid.GetVertices().push_back(y);
+						grid.GetVertices().emplace_back(x + grid.GetPixelWidth());
+						grid.GetVertices().emplace_back(y);
 						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
-						grid.GetVertices().push_back(x);
-						grid.GetVertices().push_back(y + grid.GetPixelHeight());
+						grid.GetVertices().emplace_back(x);
+						grid.GetVertices().emplace_back(y + grid.GetPixelHeight());
 						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 						// Push back the second triangle
-						grid.GetVertices().push_back(x);
-						grid.GetVertices().push_back(y + grid.GetPixelHeight());
+						grid.GetVertices().emplace_back(x);
+						grid.GetVertices().emplace_back(y + grid.GetPixelHeight());
 						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
-						grid.GetVertices().push_back(x + grid.GetPixelWidth());
-						grid.GetVertices().push_back(y);
+						grid.GetVertices().emplace_back(x + grid.GetPixelWidth());
+						grid.GetVertices().emplace_back(y);
 						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
-						grid.GetVertices().push_back(x + grid.GetPixelWidth());
-						grid.GetVertices().push_back(y + grid.GetPixelHeight());
+						grid.GetVertices().emplace_back(x + grid.GetPixelWidth());
+						grid.GetVertices().emplace_back(y + grid.GetPixelHeight());
 						grid.GetVertices().insert(grid.GetVertices().end(), grid.GetGrid()[i][j].GetColor().begin(), grid.GetGrid()[i][j].GetColor().end());
 
 					}
@@ -115,9 +117,17 @@ namespace Renderer {
 			grid.GetVertices().clear();
 
 			// TODO: Maybe also rework window usage
-			glfwSwapBuffers(RendererCore::ReturnWindow());
-			glfwPollEvents();
+			//REMOVED: glfwSwapBuffers(RendererCore::ReturnWindow());
+			//REMOVED: glfwPollEvents();
 
+		}
+
+		void BufferSwap(void* window) {
+			glfwSwapBuffers((GLFWwindow*)window);
+		}
+
+		void PollEvents() {
+			glfwPollEvents();
 		}
 
 		void Cleanup(unsigned int& VBO, unsigned int& VAO) {
